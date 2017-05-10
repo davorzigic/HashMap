@@ -1,14 +1,12 @@
 package HashMap;
 
-import java.awt.print.Printable;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
-
-import org.junit.internal.Throwables;
 
 public class CustomHashMap {
+
 	// Size of the HashMap
+	static CustomHashMap hashMap = new CustomHashMap();
 	private static final int SIZE = 16;
 	private CustomEntry<String, Integer> table[] = new CustomEntry[SIZE];
 
@@ -75,57 +73,28 @@ public class CustomHashMap {
 		}
 		return null;
 	}
-	
-	public static void print(CustomHashMap hashMap) {
-		
+
+	/***
+	 * 
+	 * @param hashMap
+	 *            which we are going to print
+	 */
+	public void print() {
 		Queue<String> queue = new LinkedList<>();
 		for (int i = 0; i < CustomHashMap.SIZE; i++) {
-			
 			try {
-				if (hashMap.table[i] == null) {
+				if (table[i] == null) {
 
 				} else {
-					CustomEntry<String, Integer> temp = hashMap.table[i];
-					String data;
-					while(hashMap.table[i].next != null) {
-						data = temp.getKey();
-						queue.add(data);
-						temp = temp.next;
-						
-					}
-					
-					queue.add(hashMap.table[i].getKey());
-					while(hashMap.table[i].next != null) {
-						queue.add(hashMap.table[i].next.getKey());
-						
-					}
-				}
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-
-			}
-			
-		}
-		System.out.println(queue);
-		
-	}
-	
-	public static void anotherPrint(CustomHashMap hashMap) {
-		Queue<String> queue = new LinkedList<>();
-		for(int i = 0; i < CustomHashMap.SIZE; i++) {
-			try {
-				if (hashMap.table[i] == null) {
-					
-				} else {
-					CustomEntry<String, Integer> temp = hashMap.table[i];
-					while(temp != null) {
+					CustomEntry<String, Integer> temp = table[i];
+					while (temp != null) {
 						String concat = temp.getKey() + "=" + temp.getValue();
 						queue.add(concat);
 						temp = temp.next;
 					}
-					
+
 				}
-				
+
 			} catch (NullPointerException e) {
 				// TODO: handle exception
 			}
@@ -133,34 +102,34 @@ public class CustomHashMap {
 		System.out.println(queue);
 	}
 
-	public int get(Integer value) {
+	/***
+	 * 
+	 * @param key  that we are searching for
+	 * @return returs true if it contains, false if don't
+	 */
+	public boolean containsKey(String key) {
+		for (int i = 0; i < CustomHashMap.SIZE; i++) {
+			try {
+				if (table[i] == null) {
 
-		return -1;
-	}
+				} else {
+					
+					CustomEntry<String, Integer> temp = table[i];
+					while (temp != null) {
+						if(temp.getKey().equals(key)) {
+							return true;
+						}
+						
+						temp = temp.next;
+					}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+				}
 
-		CustomHashMap hashMap = new CustomHashMap();
-
-		hashMap.put("Davor", 111);
-		hashMap.put("Maya", 222);
-		hashMap.put("Samir", 333);
-		hashMap.put("Brance", 444);
-		hashMap.put("Siker", 555);
-		hashMap.put("Kovac", 666);
-		hashMap.put("Koricanac", 777);
-		hashMap.put("Mare", 888);
-//		hashMap.put("Davor", 1111);
-		
-		print(hashMap);
-		anotherPrint(hashMap);
-
-		String found = hashMap.get("Mare");
-		System.out.println(found);
-
-		String notFound = hashMap.get("Steva");
-		System.out.println(notFound);
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+			}
+		}
+		return false;
 
 	}
 

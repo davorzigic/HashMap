@@ -17,6 +17,8 @@ public class TestingClass {
 		hashMap.put("Koricanac", 777);
 		hashMap.put("Mare", 888);
 		
+		System.out.println(hashMap.containsKey("Mare"));
+		System.out.println(hashMap.containsValue(222));
 		System.out.println(hashMap);
 	}
 
