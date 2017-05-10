@@ -1,5 +1,6 @@
 package HashMap;
 
+import java.awt.print.Printable;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -74,6 +75,63 @@ public class CustomHashMap {
 		}
 		return null;
 	}
+	
+	public static void print(CustomHashMap hashMap) {
+		
+		Queue<String> queue = new LinkedList<>();
+		for (int i = 0; i < CustomHashMap.SIZE; i++) {
+			
+			try {
+				if (hashMap.table[i] == null) {
+
+				} else {
+					CustomEntry<String, Integer> temp = hashMap.table[i];
+					String data;
+					while(hashMap.table[i].next != null) {
+						data = temp.getKey();
+						queue.add(data);
+						temp = temp.next;
+						
+					}
+					
+					queue.add(hashMap.table[i].getKey());
+					while(hashMap.table[i].next != null) {
+						queue.add(hashMap.table[i].next.getKey());
+						
+					}
+				}
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+
+			}
+			
+		}
+		System.out.println(queue);
+		
+	}
+	
+	public static void anotherPrint(CustomHashMap hashMap) {
+		Queue<String> queue = new LinkedList<>();
+		for(int i = 0; i < CustomHashMap.SIZE; i++) {
+			try {
+				if (hashMap.table[i] == null) {
+					
+				} else {
+					CustomEntry<String, Integer> temp = hashMap.table[i];
+					while(temp != null) {
+						String concat = temp.getKey() + "=" + temp.getValue();
+						queue.add(concat);
+						temp = temp.next;
+					}
+					
+				}
+				
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+			}
+		}
+		System.out.println(queue);
+	}
 
 	public int get(Integer value) {
 
@@ -93,42 +151,10 @@ public class CustomHashMap {
 		hashMap.put("Kovac", 666);
 		hashMap.put("Koricanac", 777);
 		hashMap.put("Mare", 888);
-		hashMap.put("Davor", 1111);
-
-		for (int i = 0; i < CustomHashMap.SIZE; i++) {
-			System.out.print("Position " + i + " ");
-			try {
-				System.out.print(hashMap.table[i].getKey());
-
-				if (hashMap.table[i].next == null) {
-
-				} else {
-					System.out.print(" -> " + hashMap.table[i].next.getKey());
-				}
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-
-			}
-			System.out.println();
-
-		}
-
-		Queue<String> queue = new LinkedList<>();
-		for (int i = 0; i < CustomHashMap.SIZE; i++) {
-
-			try {
-				if (hashMap.table[i] == null) {
-
-				} else {
-					queue.add(hashMap.table[i].getKey());
-				}
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-
-			}
-
-		}
-		System.out.println(queue);
+//		hashMap.put("Davor", 1111);
+		
+		print(hashMap);
+		anotherPrint(hashMap);
 
 		String found = hashMap.get("Mare");
 		System.out.println(found);
