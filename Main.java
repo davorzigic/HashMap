@@ -19,6 +19,7 @@ public class Main {
 		hashMap.print();
 		
 		System.out.println(hashMap.containsKey("Samir"));
+		System.out.println(hashMap.containsValue(777));
 		
 		String found = hashMap.get("Mare");
 		System.out.println(found);

@@ -132,5 +132,38 @@ public class CustomHashMap {
 		return false;
 
 	}
+	
+	/***
+	 * 
+	 * @param value that we are searching for
+	 * @return returs true if it contains, false if don't
+	 */
+	public boolean containsValue(Integer value) {
+		for (int i = 0; i < CustomHashMap.SIZE; i++) {
+			try {
+				if (table[i] == null) {
+
+				} else {
+					
+					CustomEntry<String, Integer> temp = table[i];
+					while (temp != null) {
+						if(temp.getValue().equals(value)) {
+							return true;
+						}
+						
+						temp = temp.next;
+					}
+
+				}
+
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+			}
+		}
+		
+		
+		return false;
+		
+	}
 
 }
