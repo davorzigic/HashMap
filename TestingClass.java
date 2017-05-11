@@ -19,8 +19,10 @@ public class TestingClass {
 		
 		System.out.println(hashMap.get("Davor"));
 		
+		hashMap.remove("Koricanac");
 		
-		System.out.println(hashMap.containsKey("Mare"));
+		
+		System.out.println(hashMap.containsKey("Koricanac"));
 		System.out.println(hashMap.containsValue(222));
 		System.out.println(hashMap);
 		System.out.println(hashMap.get("Pera"));

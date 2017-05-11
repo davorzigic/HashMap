@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CustomHashMap<String,Integer> hashMap = new CustomHashMap();
+		CustomHashMap hashMap = new CustomHashMap();
 		hashMap.put("Davor", 111);
 		hashMap.put("Maya", 222);
 		hashMap.put("Samir", 333);

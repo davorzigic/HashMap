@@ -3,7 +3,7 @@ package HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CustomHashMap<K,V> {
+public class CustomHashMap {
 
 	// Size of the HashMap
 	static CustomHashMap hashMap = new CustomHashMap();
