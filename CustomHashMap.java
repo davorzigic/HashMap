@@ -3,7 +3,7 @@ package HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CustomHashMap {
+public class CustomHashMap<K,V> {
 
 	// Size of the HashMap
 	static CustomHashMap hashMap = new CustomHashMap();
@@ -21,8 +21,8 @@ public class CustomHashMap {
 
 	/***
 	 * 
-	 * @param key
-	 * @param value
+	 * @param key inserting into hashMap	
+	 * @param value value for the 'key'
 	 */
 	public void put(String key, Integer value) {
 
@@ -54,24 +54,24 @@ public class CustomHashMap {
 	/***
 	 * 
 	 * @param key
-	 * @return returns the entry with the requested key, returns null if the
+	 * @return returns the value for the requested key, returns -1 if the
 	 *         HashMap contains no mapping for the key
 	 *
 	 */
-	public String get(String key) {
+	public int get(String key) {
 		int hash = key.hashCode();
 		int bucket = getBucketNumber(hash);
 
 		CustomEntry<String, Integer> existingElement = table[bucket];
 
 		while (existingElement != null) {
-			System.out.println("Traversing");
+			
 			if (existingElement.key.equals(key)) {
-				return existingElement.key;
+				return existingElement.value;
 			}
 			existingElement = existingElement.next;
 		}
-		return null;
+		return -1;
 	}
 
 	/***
