@@ -29,6 +29,10 @@ public class TestingClass {
 		
 		int size = hashMap.size();
 		System.out.println(size);
+		
+		hashMap.clear();
+		
+		System.out.println(hashMap);
 	}
 
 }

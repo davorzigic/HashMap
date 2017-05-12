@@ -49,6 +49,10 @@ public class Main {
 		int size = hashMap.size();
 		
 		System.out.println(size);
+		
+		hashMap.clear();
+		
+		hashMap.print();
 
 	}
 

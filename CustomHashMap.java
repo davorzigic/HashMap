@@ -226,5 +226,12 @@ public class CustomHashMap {
 		
 		return size;
 	}
+	
+	public void clear() {
+	
+		for(int i = 0; i < SIZE; i++) {
+			table[i] = null;
+		}
+	}
 
 }
