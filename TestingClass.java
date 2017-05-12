@@ -26,6 +26,9 @@ public class TestingClass {
 		System.out.println(hashMap.containsValue(222));
 		System.out.println(hashMap);
 		System.out.println(hashMap.get("Pera"));
+		
+		int size = hashMap.size();
+		System.out.println(size);
 	}
 
 }

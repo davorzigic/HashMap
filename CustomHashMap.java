@@ -3,6 +3,8 @@ package HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import org.w3c.dom.ls.LSException;
+
 public class CustomHashMap {
 
 	// Size of the HashMap
@@ -21,8 +23,10 @@ public class CustomHashMap {
 
 	/***
 	 * 
-	 * @param key inserting into hashMap	
-	 * @param value value for the 'key'
+	 * @param key
+	 *            inserting into hashMap
+	 * @param value
+	 *            value for the 'key'
 	 */
 	public void put(String key, Integer value) {
 
@@ -65,7 +69,7 @@ public class CustomHashMap {
 		CustomEntry<String, Integer> existingElement = table[bucket];
 
 		while (existingElement != null) {
-			
+
 			if (existingElement.key.equals(key)) {
 				return existingElement.value;
 			}
@@ -104,7 +108,8 @@ public class CustomHashMap {
 
 	/***
 	 * 
-	 * @param key  that we are searching for
+	 * @param key
+	 *            that we are searching for
 	 * @return returs true if it contains, false if don't
 	 */
 	public boolean containsKey(String key) {
@@ -113,13 +118,13 @@ public class CustomHashMap {
 				if (table[i] == null) {
 
 				} else {
-					
+
 					CustomEntry<String, Integer> temp = table[i];
 					while (temp != null) {
-						if(temp.getKey().equals(key)) {
+						if (temp.getKey().equals(key)) {
 							return true;
 						}
-						
+
 						temp = temp.next;
 					}
 
@@ -132,10 +137,11 @@ public class CustomHashMap {
 		return false;
 
 	}
-	
+
 	/***
 	 * 
-	 * @param value that we are searching for
+	 * @param value
+	 *            that we are searching for
 	 * @return returs true if it contains, false if don't
 	 */
 	public boolean containsValue(Integer value) {
@@ -144,13 +150,13 @@ public class CustomHashMap {
 				if (table[i] == null) {
 
 				} else {
-					
+
 					CustomEntry<String, Integer> temp = table[i];
 					while (temp != null) {
-						if(temp.getValue().equals(value)) {
+						if (temp.getValue().equals(value)) {
 							return true;
 						}
-						
+
 						temp = temp.next;
 					}
 
@@ -160,10 +166,65 @@ public class CustomHashMap {
 				// TODO: handle exception
 			}
 		}
-		
-		
+
 		return false;
+
+	}
+	/***
+	 * 
+	 * @param key which we are removing from the hashmap
+	 */
+	public void remove(String key) {
 		
+		int hash = key.hashCode();
+		int bucket = getBucketNumber(hash);
+
+		CustomEntry<String, Integer> removingElement = table[bucket];
+		
+		// If the removing element is on the last place in bucket
+		if(removingElement.key.hashCode() == hash && removingElement.next == null) {
+			table[bucket] = null;
+		}
+		
+		// If the removing element is on the first place in the bucket, but there is 'next'
+		else if (removingElement.key.hashCode() == hash && removingElement.next != null) {
+		
+			table[bucket] = removingElement.next;
+		}	
+		
+		// If the removing element is in the middle of the bucket
+		else if(removingElement.next.key.hashCode() == hash && removingElement.next.next != null) {
+			
+			removingElement.next = removingElement.next.next;
+			removingElement.next.next = null;
+			
+		} else {
+			
+			for (; removingElement.next.key.hashCode() != hash; removingElement = removingElement.next) {
+				
+			}
+			removingElement.next = null;
+		}
+		
+
+	}
+	
+	/***
+	 * 
+	 * @return returns the size of the hashmap
+	 */
+	public int size() {
+		int size = 0;
+		CustomEntry<String, Integer> traversingElement;
+		
+		for(int i = 0; i < SIZE; i++) {
+			traversingElement = table[i];
+			for (; traversingElement != null; traversingElement = traversingElement.next) {
+				size++;
+			}
+		}
+		
+		return size;
 	}
 
 }
