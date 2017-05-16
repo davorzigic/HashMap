@@ -27,6 +27,11 @@ public class Main {
 		hashMap.put("Olja", 432);
 		// hashMap.put("Davor", 1111);
 
+		CustomHashMap<Integer, String> anotherHashMap = new CustomHashMap<Integer, String>();
+		anotherHashMap.put(111, "Zigic");
+		System.out.println(anotherHashMap);
+		
+		
 		
 		hashMap.print();
 		

@@ -19,6 +19,7 @@ public class CustomEntry<K,V> {
 		next = null;
 	}
 	
+
 	public V getValue() {
 		return value;
 	}

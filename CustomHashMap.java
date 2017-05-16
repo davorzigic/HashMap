@@ -5,7 +5,7 @@ import java.util.Queue;
 
 import org.w3c.dom.ls.LSException;
 
-public class CustomHashMap {
+public class CustomHashMap<K,V> {
 
 	// Size of the HashMap
 	static CustomHashMap hashMap = new CustomHashMap();
@@ -19,6 +19,37 @@ public class CustomHashMap {
 	 */
 	private int getBucketNumber(int hash) {
 		return hash & (SIZE - 1);
+	}
+	
+	/***
+	 * 
+	 * @param key 
+	 * @param value
+	 */
+	public void put(K key, V value) {
+		int hash = key.hashCode();
+		int bucket = getBucketNumber(hash);
+
+		CustomEntry<K,V> existingElement = (CustomEntry<K, V>) table[bucket];
+
+		// Traverse thru table until we have free position to insert CustomEntry
+		// object
+		for (; existingElement != null; existingElement = existingElement.next) {
+			// If we have Entry with the same key
+			if (existingElement.key.equals(key)) {
+				System.out.println("duplicate key value pair, replacing existing key " + key + ", with value " + value);
+				existingElement.value = value;
+				return;
+
+			}
+
+		}
+		// ADDING NEW
+
+		CustomEntry<K,V> newEntry = new CustomEntry<K,V>(key, value);
+		newEntry.next = (CustomEntry<K, V>) table[bucket];
+		table[bucket] = (CustomEntry<String, Integer>) newEntry;
+		System.out.println("ADDING NEW at position " + bucket);
 	}
 
 	/***
