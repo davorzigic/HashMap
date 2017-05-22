@@ -1,0 +1,12 @@
+Your task is to implement your own HashMap.
+
+Methods that you will need to include are: 
+- put, adding the stuff into the hashmap
+- get, returns value of the given key
+- print, prints the whole hashmap
+- contains key, returns if the hashmap contains mapping for the key
+- contains value, returns if this map maps one or more keys to the specific value
+- remove, removes the mapping for the specified key
+- clear, removes all of the mappings 
+
+*** Before you start coding, you should learn about Generics***

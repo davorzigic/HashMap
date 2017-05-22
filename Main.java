@@ -1,10 +1,12 @@
 package HashMap;
 
+import java.util.HashMap;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CustomHashMap hashMap = new CustomHashMap();
+		CustomHashMap hashMap = new CustomHashMap(); // raw type hashmap
 		hashMap.put("Davor", 111);
 		hashMap.put("Maya", 222);
 		hashMap.put("Samir", 333);
@@ -31,7 +33,10 @@ public class Main {
 		anotherHashMap.put(111, "Zigic");
 		System.out.println(anotherHashMap);
 		
-		
+		HashMap<String, Integer> phonebook = new HashMap<>();
+		phonebook.put("Steva", 432);
+		phonebook.put("Moma", 111);
+		System.out.println(phonebook.get("Steva"));
 		
 		hashMap.print();
 		
@@ -47,13 +52,8 @@ public class Main {
 		int found = hashMap.get("Mare");
 		System.out.println(found);
 		
-
-		int notFound = hashMap.get("Steva");
-		System.out.println(notFound);
-		
-		int size = hashMap.size();
-		
-		System.out.println(size);
+		boolean testing = hashMap.containsValue(111);
+		System.out.println(testing);
 		
 		hashMap.clear();
 		

@@ -1,5 +1,6 @@
 package HashMap;
 
+import java.io.ObjectOutputStream.PutField;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -20,6 +21,7 @@ public class CustomHashMap<K,V> {
 	private int getBucketNumber(int hash) {
 		return hash & (SIZE - 1);
 	}
+	
 	
 	/***
 	 * 
@@ -48,7 +50,7 @@ public class CustomHashMap<K,V> {
 
 		CustomEntry<K,V> newEntry = new CustomEntry<K,V>(key, value);
 		newEntry.next = (CustomEntry<K, V>) table[bucket];
-		table[bucket] = (CustomEntry<String, Integer>) newEntry;
+		table[bucket] = (CustomEntry) newEntry;
 		System.out.println("ADDING NEW at position " + bucket);
 	}
 
