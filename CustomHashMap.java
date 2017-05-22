@@ -1,15 +1,15 @@
 package HashMap;
 
-import java.io.ObjectOutputStream.PutField;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-import org.w3c.dom.ls.LSException;
+
 
 public class CustomHashMap<K,V> {
 
 	// Size of the HashMap
-	static CustomHashMap hashMap = new CustomHashMap();
+	//	static CustomHashMap hashMap = new CustomHashMap();
 	private static final int SIZE = 16;
 	private CustomEntry<String, Integer> table[] = new CustomEntry[SIZE];
 
@@ -24,7 +24,7 @@ public class CustomHashMap<K,V> {
 	
 	
 	/***
-	 * 
+	 * Method with the generics
 	 * @param key 
 	 * @param value
 	 */
@@ -55,7 +55,7 @@ public class CustomHashMap<K,V> {
 	}
 
 	/***
-	 * 
+	 * Method without generics
 	 * @param key
 	 *            inserting into hashMap
 	 * @param value

@@ -6,7 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CustomHashMap hashMap = new CustomHashMap(); // raw type hashmap
+		CustomHashMap<String,String> hashMap = new CustomHashMap<String,String>(); // raw type hashmap
+		hashMap.put("Testing", "hashmap");
 		hashMap.put("Davor", 111);
 		hashMap.put("Maya", 222);
 		hashMap.put("Samir", 333);
@@ -27,37 +28,16 @@ public class Main {
 		hashMap.put("Laci", 3424);
 		hashMap.put("Bajus", 32411);
 		hashMap.put("Olja", 432);
+		hashMap.print();
 		// hashMap.put("Davor", 1111);
 
 		CustomHashMap<Integer, String> anotherHashMap = new CustomHashMap<Integer, String>();
 		anotherHashMap.put(111, "Zigic");
-		System.out.println(anotherHashMap);
+		anotherHashMap.put(222, "Peromobil");
 		
-		HashMap<String, Integer> phonebook = new HashMap<>();
-		phonebook.put("Steva", 432);
-		phonebook.put("Moma", 111);
-		System.out.println(phonebook.get("Steva"));
+		CustomHashMap<String, String> andYetAnotherOne = new CustomHashMap<String, String>();
+		andYetAnotherOne.put("Mobilni", "telefon");
 		
-		hashMap.print();
-		
-		System.out.println(hashMap.containsKey("Samir"));
-		System.out.println(hashMap.containsValue(777));
-		
-		hashMap.remove("Koricanac");
-		hashMap.remove("Siker");
-		hashMap.remove("Bajus");
-		
-		hashMap.print();
-		
-		int found = hashMap.get("Mare");
-		System.out.println(found);
-		
-		boolean testing = hashMap.containsValue(111);
-		System.out.println(testing);
-		
-		hashMap.clear();
-		
-		hashMap.print();
 
 	}
 
